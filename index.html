@@ -51,12 +51,29 @@
     backdrop-filter: blur(10px);
 
     border-bottom: 1px solid #333;
+    box-shadow: 0 5px 25px rgba(0, 170, 255, 0.08);
 }
 
 .logo {
     font-size: 20px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(0, 170, 255, 0.5);
+
+    transition: 0.3s;
+}
+
+.logo:hover {
+    color: #00aaff;
+
+    text-shadow:
+        0 0 15px rgba(0, 170, 255, 0.8);
 }
 
 .nav-links {
@@ -65,10 +82,41 @@
 }
 
 .nav-links a {
+    position: relative;
+
     color: white;
+
     text-decoration: none;
+
     font-size: 15px;
+
+    padding: 5px 0;
+
     transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -5px;
+
+    width: 0;
+    height: 2px;
+
+    background: #00aaff;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00aaff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
@@ -95,7 +143,9 @@
     padding: 60px 20px;
 
     background:
-        radial-gradient(circle at top, #172033 0%, #111 45%, #080808 100%);
+    radial-gradient(circle at 50% 20%, rgba(0, 170, 255, 0.15), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(0, 100, 255, 0.08), transparent 30%),
+    linear-gradient(135deg, #080808, #111827, #080808);
 
     border-bottom: 1px solid #333;
 }
@@ -397,6 +447,13 @@ section h2::after {
         gap: 15px;
 
         padding: 18px 20px;
+            .back-to-top {
+        right: 15px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
     }
 
     .nav-links {
@@ -448,6 +505,138 @@ section h2::after {
     }
 
 }
+        /* Hero Animation */
+
+@keyframes heroGlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+#home {
+    background-size: 200% 200%;
+
+    animation: heroGlow 12s ease infinite;
+}
+        /* Developer Status */
+
+.hero-status {
+    margin-top: 15px;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 14px;
+
+    color: #00aaff;
+
+    opacity: 0.9;
+
+    letter-spacing: 1px;
+
+    animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+        footer {
+    padding: 45px 20px;
+    background: #080808;
+    border-top: 1px solid #222;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00aaff;
+}
+
+footer p {
+    color: #888;
+}
+
+.copyright {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #555 !important;
+}
+        .back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #00aaff;
+    color: white;
+
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.4);
+
+    transition: 0.3s;
+
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    background: white;
+    color: #111;
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 25px rgba(0, 170, 255, 0.7);
+}
 
     </style>
 
@@ -486,6 +675,10 @@ section h2::after {
 <p class="hero-description">
     Building my skills in programming, web development
     and information technology.
+</p>
+
+<p class="hero-status">
+    &lt; Developing the future with technology /&gt;
 </p>
 
 <a href="#projects" class="hero-button">VIEW MY PROJECTS</a>
@@ -697,11 +890,30 @@ section h2::after {
 
     <footer>
 
-        <p>
-            &copy; 2026 Mozes Boola. All Rights Reserved.
-        </p>
+    <div class="footer-logo">
+        MOZES BOOLA
+    </div>
 
-    </footer>
+    <p>
+        Programmer & Technology Enthusiast
+    </p>
+
+    <div class="footer-links">
+
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+    <p class="copyright">
+        &copy; 2026 Mozes Boola. All Rights Reserved.
+    </p>
+        <a href="#home" class="back-to-top">↑</a>
+
+</footer>
 
 
 </body>
